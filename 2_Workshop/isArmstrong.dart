@@ -3,6 +3,14 @@ import 'dart:math';
 void main() {
   int number = 153;
 
+  var result = isArmstrong(number);
+
+  result
+      ? print('Girilen değer Armstrong sayısıdır.')
+      : print('Girilen değer Amstrong sayısı değildir.');
+}
+
+bool isArmstrong(int number) {
   List<int> numbers = [];
   int total = 0;
   int counter = 0;
@@ -19,7 +27,7 @@ void main() {
   }
 
   if (total == checkNumber)
-    print('Girilen değer Armstrong sayısıdır.');
+    return true;
   else
-    print('Girilen değer Amstrong sayısı değildir.');
+    return false;
 }
