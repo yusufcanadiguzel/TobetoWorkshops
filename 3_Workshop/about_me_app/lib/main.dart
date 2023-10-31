@@ -26,6 +26,13 @@ class myApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/user_pp.jpg'),
+                    radius: 50.0,
+                  ),
+                  margin: EdgeInsetsDirectional.only(bottom: 10.0),
+                ),
+                Container(
                   child: Text('YUSUFCAN ADIGÜZEL',
                     style: TextStyle(
                         color: Colors.white,
