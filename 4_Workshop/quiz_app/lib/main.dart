@@ -1,63 +1,26 @@
-import 'data/question_bank.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/quiz_screen.dart';
+import 'package:quiz_app/result_screen.dart';
+import 'package:quiz_app/start_screen.dart';
+import 'data/question_bank.dart';
 
-void main(){
-  runApp(const MaterialApp(home: StartScreen()));
-}
+void main() => runApp(MyApp());
 
-QuestionBank questionBank = QuestionBank();
-
-class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueGrey.shade900,
-      body: const QuizScreen()
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const StartScreen(),
+        'quizScreen' : (context) => const QuizScreen(),
+        'resultScreen' : (context) => const ResultScreen()
+      },
     );
   }
 }
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
 
-  @override
-  State<QuizScreen> createState() => _QuizScreenState();
-}
 
-class _QuizScreenState extends State<QuizScreen> {
-  int counter = 0;
-
-  ElevatedButton createAnswers(String data){
-    return ElevatedButton(onPressed: (){
-      setState(() {
-        if(counter <= 3)
-          counter++;
-        else
-          counter = 0;
-      });
-    }, child: Text(data, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)), style: ElevatedButton.styleFrom(backgroundColor: Colors.white));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Soru', style: TextStyle(fontSize: 20.0 ,fontWeight: FontWeight.bold, color: Colors.grey)),
-          Text(questionBank.questions[counter].question, style: TextStyle(color: Colors.white)),
-          createAnswers(questionBank.questions[counter].answers[0]),
-          createAnswers(questionBank.questions[counter].answers[1]),
-          createAnswers(questionBank.questions[counter].answers[2]),
-          createAnswers(questionBank.questions[counter].answers[3])
-        ],
-      ),
-    ),);
-  }
-}
-
-int nextQuestion(int counter){
-  return counter++;
-}
