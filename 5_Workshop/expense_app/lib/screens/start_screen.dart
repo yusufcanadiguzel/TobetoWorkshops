@@ -1,6 +1,7 @@
 import 'package:expense_app/widgets/add_expence_widget.dart';
 import 'package:expense_app/widgets/expences_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:expense_app/widgets/add_expence_widget.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -19,7 +20,7 @@ class StartScreen extends StatelessWidget {
               showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return const ExpenceModal();
+                    return const ExpenseModal();
                   });
             },
           )
